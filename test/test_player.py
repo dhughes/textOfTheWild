@@ -28,5 +28,11 @@ class TestPlayer(unittest.TestCase):
 
 	def test_playerCanTakeItem(self):
 		player = Player()
+		Food.MIGHTY_BANNNA
 		player.take(Food.APPLE)
 		self.assertIn(Food.APPLE, player.inventory)
+
+	def test_playerIsDeadWhenHealthIsZero(self):
+		player = Player()
+		player.takeDamage(10)
+		self.assertTrue(player.isDead)

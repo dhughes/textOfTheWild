@@ -17,3 +17,6 @@ class Player:
 
 	def take(self, item):
 		self.inventory.append(item)
+
+	def isDead(self):
+		self.health == 0
