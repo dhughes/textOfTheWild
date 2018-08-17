@@ -14,13 +14,16 @@ class Player:
 			self.health -= damage
 
 	def eat(self, food):
-        if isinstance(food, Edible):
-            self.health += food.hearts
-        else:
-            raise "sdffdsfdsafds"
+		if isinstance(food, Edible):
+			self.health += food.hearts
+		else:
+			raise InedibleException("{} is not edible".format(food.item_name))
 
 	def take(self, item):
 		self.inventory.append(item)
 
 	def isDead(self):
 		self.health == 0
+
+class InedibleException(Exception):
+	pass

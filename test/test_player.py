@@ -1,5 +1,6 @@
 import unittest
 from game.player import Player
+from game.player import InedibleException
 from game.item.material import Ingredient
 from game.item.material import Insect
 
@@ -30,8 +31,8 @@ class TestPlayer(unittest.TestCase):
 	def test_canOnlyEatEdible(self):
 		player = Player()
 		player.takeDamage(4)
-		player.eat(Insect.BLADED_RHINO_BEETLE)
-
+		with self.assertRaises(InedibleException):
+			player.eat(Insect.BLADED_RHINO_BEETLE)
 
 	def test_playerCanTakeItem(self):
 		player = Player()

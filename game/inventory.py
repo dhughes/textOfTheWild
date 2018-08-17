@@ -1,3 +1,9 @@
+from game.item.material import *
 
 class Inventory:
-	pass
+
+	def __init__(self):
+		self.items = {
+			Ingredient.APPLE: 123,
+			"x": 322
+		}
