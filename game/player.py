@@ -1,3 +1,4 @@
+from game.item.material import Edible
 
 class Player:
 
@@ -13,7 +14,10 @@ class Player:
 			self.health -= damage
 
 	def eat(self, food):
-		self.health += food.health
+        if isinstance(food, Edible):
+            self.health += food.hearts
+        else:
+            raise "sdffdsfdsafds"
 
 	def take(self, item):
 		self.inventory.append(item)

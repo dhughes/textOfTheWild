@@ -1,6 +1,7 @@
 import unittest
 from game.player import Player
-from game.item.food import Food
+from game.item.material import Ingredient
+from game.item.material import Insect
 
 class TestPlayer(unittest.TestCase):
 
@@ -23,14 +24,19 @@ class TestPlayer(unittest.TestCase):
 	def test_eatToGainHealth(self):
 		player = Player()
 		player.takeDamage(4)
-		player.eat(Food.APPLE)
+		player.eat(Ingredient.APPLE)
 		self.assertEqual(player.health, 1.5)
+
+	def test_canOnlyEatEdible(self):
+		player = Player()
+		player.takeDamage(4)
+		player.eat(Insect.BLADED_RHINO_BEETLE)
+
 
 	def test_playerCanTakeItem(self):
 		player = Player()
-		Food.MIGHTY_BANNNA
-		player.take(Food.APPLE)
-		self.assertIn(Food.APPLE, player.inventory)
+		player.take(Ingredient.APPLE)
+		self.assertIn(Ingredient.APPLE, player.inventory)
 
 	def test_playerIsDeadWhenHealthIsZero(self):
 		player = Player()
