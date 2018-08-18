@@ -5,14 +5,16 @@ class Inventory
 	attr_accessor :items
 
 	def initialize
-		@items = {
-			Ingredient::APPLE => InventoryItem.new,
-			Ingredient::BIG_HEARTY_RADISH => InventoryItem.new
-		}
+		@items = {}
 	end
 
 	def add(item)
-		self.items[item].add
+		if items.key? item
+			items[item].add
+		else
+			items[item] = InventoryItem.new
+		end
+
 	end
 
 end

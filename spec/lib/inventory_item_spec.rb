@@ -2,10 +2,10 @@ require 'inventory_item'
 
 RSpec.describe InventoryItem do
 
-	it 'has a quantity default quantity of 0' do
+	it 'has a default quantity of 1' do
 		item = InventoryItem.new
 
-		expect(item.quantity).to eq(0)
+		expect(item.quantity).to eq(1)
 	end
 
 	it 'has a quantity' do
@@ -32,7 +32,13 @@ RSpec.describe InventoryItem do
 
 			item.add
 
-			expect(item.quantity).to eq(1)
+			expect(item.quantity).to eq(2)
+		end
+
+		context 'when adding more than the max quantity' do
+			it 'raises an error' do
+				expect(true).to be(false)
+			end
 		end
 	end
 

@@ -8,10 +8,6 @@ RSpec.describe Inventory do
 		Inventory.new
 	end
 
-	it 'is made up of inventory items' do
-		expect(Inventory.new.items[Ingredient::APPLE]).to be_a(InventoryItem)
-	end
-
 	describe '#add' do
 		it 'can hold items' do
 			inventory = Inventory.new
@@ -19,6 +15,16 @@ RSpec.describe Inventory do
 			inventory.add(Ingredient::APPLE)
 
 			expect(inventory.items[Ingredient::APPLE].quantity).to eq(1)
+		end
+
+		it 'can hold multiples of the same items' do
+			inventory = Inventory.new
+
+			inventory.add(Ingredient::APPLE)
+			inventory.add(Ingredient::APPLE)
+			inventory.add(Ingredient::APPLE)
+
+			expect(inventory.items[Ingredient::APPLE].quantity).to eq(3)
 		end
 	end
 

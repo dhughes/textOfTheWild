@@ -2,7 +2,7 @@
 class InventoryItem
 	attr_accessor :quantity, :max_quantity
 
-	def initialize(quantity: 0, max_quantity: 999)
+	def initialize(quantity: 1, max_quantity: 999)
 		@quantity = quantity
 		@max_quantity = max_quantity
 	end
