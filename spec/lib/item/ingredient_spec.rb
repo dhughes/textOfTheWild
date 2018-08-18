@@ -22,6 +22,4 @@ RSpec.describe Ingredient do
 		expect(Ingredient::APPLE.value).to be_a(Numeric)
 	end
 
-
-
 end
