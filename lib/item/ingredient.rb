@@ -6,12 +6,10 @@ require 'item/edible'
 class Ingredient < Item
   include Edible
 
-  attr_accessor :name, :description, :value, :health
+  attr_accessor :health
 
   def initialize(name:, description:, value:, health:)
-    @name = name
-    @description = description
-    @value = value
+    super(name: name, description: description, value: value)
     @health = health
   end
 

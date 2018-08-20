@@ -38,7 +38,7 @@ RSpec.describe Player do
       player = Player.new
 
       expect { player.take_damage(123) }.
-        to(raise_error { Errors::Dead })
+        to(raise_error { Errors::DeadError })
       expect(player.health).to eq(0)
     end
   end

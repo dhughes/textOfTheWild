@@ -2,19 +2,20 @@
 
 require 'item/ingredient'
 require 'inventory_item'
+require 'set'
 
 class Inventory
   attr_accessor :items
 
   def initialize
-    @items = {}
+    @items = Set.new
   end
 
   def add(item)
-    if items.key? item
-      items[item].add
-    else
-      items[item] = InventoryItem.new
-    end
+    items << InventoryItem.new(item: item)
+  end
+
+  def contains?(item)
+    items.include? InventoryItem.new(item: item)
   end
 end

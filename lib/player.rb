@@ -13,7 +13,7 @@ class Player
   def take_damage(damage)
     if health < damage
       self.health = 0
-      raise Errors::Dead
+      raise Errors::DeadError
     end
 
     self.health = health - damage

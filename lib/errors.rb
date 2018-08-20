@@ -2,5 +2,6 @@
 
 module Errors
   class InedibleError < StandardError; end
-  class Dead < StandardError; end
+  class DeadError < StandardError; end
+  class CantHoldMoreError < StandardError; end
 end
