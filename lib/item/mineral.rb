@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'item/item'
-require 'item/groupable'
 
 class Mineral < Item
 
