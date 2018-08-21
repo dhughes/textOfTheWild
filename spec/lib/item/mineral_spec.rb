@@ -3,11 +3,12 @@
 require 'item/mineral'
 
 RSpec.describe Mineral do
-  it 'has an Amber' do
-    Mineral::AMBER
+
+  it 'is not edible' do
+    expect(Mineral::AMBER.edible?).to eq(false)
   end
 
   it 'amber has value of 30' do
-    expect(Mineral::AMBER.value).to eq(30)
+    expect(Mineral::AMBER.value).to be_a(Numeric)
   end
 end

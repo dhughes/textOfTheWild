@@ -3,12 +3,13 @@
 require 'item/ingredient'
 
 RSpec.describe Ingredient do
-  it 'has an apple' do
-    Ingredient::APPLE
+
+  it 'is edible' do
+    expect(Ingredient::APPLE.edible?).to eq(true)
   end
 
-  it 'apple has health of 0.5' do
-    expect(Ingredient::APPLE.health).to eq(0.5)
+  it 'has health' do
+    expect(Ingredient::APPLE.health).to be_a(Numeric)
   end
 
   it 'has a name' do

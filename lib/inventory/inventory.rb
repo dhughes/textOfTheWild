@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'item/ingredient'
-require 'inventory_item'
+#require 'inventory/inventory_item'
 require 'set'
 
 class Inventory
@@ -12,10 +12,10 @@ class Inventory
   end
 
   def add(item)
-    items << InventoryItem.new(item: item)
+    #items << InventoryItem.new(item: item)
   end
 
-  def contains?(item)
-    items.include? InventoryItem.new(item: item)
-  end
+  # def contains?(item)
+  #   items.include? InventoryItem.new(item: item)
+  # end
 end

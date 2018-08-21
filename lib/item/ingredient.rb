@@ -2,6 +2,7 @@
 
 require 'item/item'
 require 'item/edible'
+require 'item/groupable'
 
 class Ingredient < Item
   include Edible

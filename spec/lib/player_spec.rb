@@ -4,7 +4,7 @@ require 'player'
 require 'errors'
 require 'item/ingredient'
 require 'item/mineral'
-require 'inventory'
+require 'inventory/inventory'
 
 RSpec.describe Player do
   it 'creates a player' do
