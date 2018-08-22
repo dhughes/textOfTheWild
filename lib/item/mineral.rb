@@ -3,7 +3,6 @@
 require 'item/item'
 
 class Mineral < Item
-
   attr_accessor :value
 
   def initialize(name:, description:, value:)

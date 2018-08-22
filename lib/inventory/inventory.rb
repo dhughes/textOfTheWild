@@ -8,7 +8,7 @@ require 'set'
 class Inventory
   attr_accessor :items, :max_slots
 
-  def initialize(max_slots:)
+  def initialize(max_slots: nil)
     @items = {}
     @max_slots = max_slots
   end
@@ -16,7 +16,6 @@ class Inventory
   def add(item)
     inventory_item = InventoryItem.new(item)
     raise Errors::CantHoldMoreError unless can_hold_more?(inventory_item)
-
 
     items[inventory_item] = if items.include? inventory_item
                               items[inventory_item] + 1
@@ -35,11 +34,7 @@ class Inventory
     if items.include? inventory_item
       items[inventory_item] < 999
     else
-      slots_used < max_slots
+      max_slots.nil? || slots_used < max_slots
     end
   end
-
-  # def contains?(item)
-  #   items.include? InventoryItem.new(item: item)
-  # end
 end

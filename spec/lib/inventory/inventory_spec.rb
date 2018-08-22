@@ -6,16 +6,15 @@ require 'item/food'
 require 'errors'
 
 RSpec.describe Inventory do
-
   describe '#add' do
     it 'can add items to inventory' do
-      inventory = Inventory.new(max_slots: 10)
+      inventory = Inventory.new
 
       inventory.add(Ingredient::APPLE)
     end
 
     it 'stacks multiple ingredients in one slot' do
-      inventory = Inventory.new(max_slots: 10)
+      inventory = Inventory.new
 
       inventory.add(Ingredient::APPLE)
       inventory.add(Ingredient::APPLE)
@@ -24,7 +23,7 @@ RSpec.describe Inventory do
     end
 
     it 'does not stack meals in one slot' do
-      inventory = Inventory.new(max_slots: 10)
+      inventory = Inventory.new
 
       inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
       inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
@@ -33,7 +32,7 @@ RSpec.describe Inventory do
     end
 
     it 'correctly stack (or not) different types of items in slots' do
-      inventory = Inventory.new(max_slots: 10)
+      inventory = Inventory.new
 
       inventory.add(Ingredient::APPLE)
       inventory.add(Ingredient::APPLE)
@@ -79,7 +78,6 @@ RSpec.describe Inventory do
           1000.times { inventory.add(Ingredient::APPLE) }
         end.to raise_error(Errors::CantHoldMoreError)
       end
-
     end
 
     # it 'items added to inventory appear in inventory' do
@@ -111,5 +109,4 @@ RSpec.describe Inventory do
     #   end
     # end
   end
-
 end

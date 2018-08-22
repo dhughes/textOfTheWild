@@ -3,7 +3,6 @@
 require 'item/mineral'
 
 RSpec.describe Mineral do
-
   it 'is not edible' do
     expect(Mineral::AMBER.edible?).to eq(false)
   end

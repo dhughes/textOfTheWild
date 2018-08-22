@@ -3,7 +3,6 @@
 require 'item/food'
 
 RSpec.describe Food do
-
   it 'is edible' do
     expect(Food::FISH_AND_MUSHROOM_SKEWER.edible?).to eq(true)
   end

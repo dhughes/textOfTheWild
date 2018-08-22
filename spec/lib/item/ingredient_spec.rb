@@ -3,7 +3,6 @@
 require 'item/ingredient'
 
 RSpec.describe Ingredient do
-
   it 'is edible' do
     expect(Ingredient::APPLE.edible?).to eq(true)
   end

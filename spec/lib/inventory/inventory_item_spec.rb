@@ -32,7 +32,6 @@ RSpec.describe InventoryItem do
       inventory_item1 = InventoryItem.new(Food::FISH_AND_MUSHROOM_SKEWER)
       inventory_item2 = InventoryItem.new(Food::FISH_AND_MUSHROOM_SKEWER)
 
-
       expect(inventory_item1 != inventory_item2).to be(true)
       expect(inventory_item1.eql?(inventory_item2)).to be(false)
       expect(inventory_item1).not_to eq(inventory_item2)

@@ -70,4 +70,34 @@ RSpec.describe Player do
       end
     end
   end
+
+  it 'has a weapons inventory' do
+    player = Player.new
+
+    expect(player.weapons).to be_a(Inventory)
+  end
+
+  it 'has a bow and arrows inventory' do
+    player = Player.new
+
+    expect(player.bows_and_arrows).to be_a(Inventory)
+  end
+
+  it 'has an ingredients inventory' do
+    player = Player.new
+
+    expect(player.ingredients).to be_a(Inventory)
+  end
+
+  it 'has a foods inventory' do
+    player = Player.new
+
+    expect(player.foods).to be_a(Inventory)
+  end
+
+  it 'has a key items inventory' do
+    player = Player.new
+
+    expect(player.key_items).to be_a(Inventory)
+  end
 end

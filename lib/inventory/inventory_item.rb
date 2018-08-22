@@ -4,7 +4,6 @@ require 'item/ingredient'
 require 'item/mineral'
 
 class InventoryItem
-
   attr_accessor :item
 
   def initialize(item)
@@ -34,5 +33,4 @@ class InventoryItem
   def stackable?
     [Item::Ingredient, Item::Mineral].include? item.class
   end
-
 end
