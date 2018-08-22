@@ -34,13 +34,22 @@ RSpec.describe Player do
       expect(player.health).to eq(2.5)
     end
 
-    it 'raises an error when the player dies' do
-      player = Player.new
+    context 'before the player dies' do
+      it "returns the player's remaining health" do
+        player = Player.new(health: 5)
 
-      expect { player.take_damage(123) }.
-        to(raise_error { Errors::DeadError })
-      expect(player.health).to eq(0)
+        expect(player.take_damage(0.5)).to eq(4.5)
+      end
     end
+
+    context 'when the player dies' do
+      it 'returns 0' do
+        player = Player.new(health: 5)
+
+        expect(player.take_damage(6)).to eq(0)
+      end
+    end
+
   end
 
   describe '#eat' do

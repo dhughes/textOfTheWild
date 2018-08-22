@@ -20,6 +20,11 @@ class Material < Item
     description: 'A butterfly found in the woods and plains of warm regions. Its wings absorb the warmth of the sun. Cook it with monster parts to create an elixir that makes you feel warm and fuzzy.',
     value: 2
   )
+  WOOD = Material.new(
+    name: 'Wood',
+    description: 'A portable bundle of wood. You can use this to make a campfire if you have something to light it.',
+    value: 12
+  )
 
   class << self
     private :new
