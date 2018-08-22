@@ -1,44 +1,43 @@
 # frozen_string_literal: true
 
 require 'item/ingredient'
-#require 'inventory/inventory_item'
+require 'item/mineral'
+require 'inventory/inventory_item'
 require 'set'
 
 class Inventory
-  attr_accessor :items, :slots
+  attr_accessor :items, :max_slots
 
-  def initialize(slots:)
-    @items = []
-    @slots = slots
+  def initialize(max_slots:)
+    @items = {}
+    @max_slots = max_slots
   end
 
   def add(item)
-    raise Errors::CantHoldMoreError unless can_hold_more?(item)
-    items << item
+    inventory_item = InventoryItem.new(item)
+    raise Errors::CantHoldMoreError unless can_hold_more?(inventory_item)
+
+
+    items[inventory_item] = if items.include? inventory_item
+                              items[inventory_item] + 1
+                            else
+                              1
+                            end
+  end
+
+  def slots_used
+    items.size
   end
 
   private
 
-  def can_hold_more?(item)
-    if stackable?(item)
-      # the item is stackable
-      count(item)
+  def can_hold_more?(inventory_item)
+    if items.include? inventory_item
+      items[inventory_item] < 999
     else
-      # the item is not stackable
-      items.size == slots
+      slots_used < max_slots
     end
-
   end
-
-  def stackable?(item)
-    [Item::Ingredient, Item::Mineral].include? item.class
-  end
-
-  def count(item)
-    items.select { |inventory_item| inventory_item == item }.size
-  end
-
-  
 
   # def contains?(item)
   #   items.include? InventoryItem.new(item: item)
