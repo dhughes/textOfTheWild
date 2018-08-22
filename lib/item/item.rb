@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'item/edible'
+
 class Item
   attr_accessor :name, :description
 

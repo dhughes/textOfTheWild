@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'item/ingredient'
-require 'item/mineral'
+require 'item/material'
 require 'inventory/inventory_item'
 require 'set'
 

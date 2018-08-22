@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'item/ingredient'
-require 'item/mineral'
+require 'item/material'
 
 class InventoryItem
   attr_accessor :item
@@ -31,6 +31,6 @@ class InventoryItem
   end
 
   def stackable?
-    [Ingredient, Mineral].include? item.class
+    [Ingredient, Material].include? item.class
   end
 end

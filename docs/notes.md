@@ -30,6 +30,7 @@
 		* hat / helm
 		* shirt / top
 		* pants / boots
+		* armor is sellable, except for some (dlc ones, I think) 
 	* Material (all cookable)
 		* 999 items per slot
 		* edible
@@ -49,6 +50,7 @@
 		* One item per slot
 		* Can hold duplicates
 		* Max slots: ???
+		* Foods are sellable
 
 * Material
 	* edible / inedible

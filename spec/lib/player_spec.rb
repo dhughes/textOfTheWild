@@ -3,7 +3,7 @@
 require 'player'
 require 'errors'
 require 'item/ingredient'
-require 'item/mineral'
+require 'item/material'
 require 'inventory/inventory'
 
 RSpec.describe Player do
@@ -66,7 +66,7 @@ RSpec.describe Player do
       it 'raises an InedibleError' do
         player = Player.new(health: 2.5)
 
-        expect { player.eat(Mineral::AMBER) }.to raise_error(Errors::InedibleError)
+        expect { player.eat(Material::AMBER) }.to raise_error(Errors::InedibleError)
       end
     end
   end
