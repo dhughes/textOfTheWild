@@ -6,11 +6,12 @@ require 'item/edible'
 class Ingredient < Item
   include Edible
 
-  attr_accessor :health
+  attr_accessor :health, :value
 
   def initialize(name:, description:, value:, health:)
-    super(name: name, description: description, value: value)
+    super(name: name, description: description)
     @health = health
+    @value = value
   end
 
   ACORN = Ingredient.new(

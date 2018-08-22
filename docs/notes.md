@@ -1,12 +1,4 @@
-inventory is basically made up of category that contain items.
-    category: 
-        have a max number of slots
-    inventory slots:
-         have an associated item
-     item 
-        knows if it can be grouped or not.
-        
-    
+
          
 
 * Inventory:

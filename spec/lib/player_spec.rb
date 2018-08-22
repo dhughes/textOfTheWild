@@ -77,10 +77,28 @@ RSpec.describe Player do
     expect(player.weapons).to be_a(Inventory)
   end
 
-  it 'has a bow and arrows inventory' do
+  it 'has a bows inventory' do
     player = Player.new
 
-    expect(player.bows_and_arrows).to be_a(Inventory)
+    expect(player.bows).to be_a(Inventory)
+  end
+
+  it 'has an arrows inventory' do
+    player = Player.new
+
+    expect(player.arrows).to be_a(Inventory)
+  end
+
+  it 'has a shield inventory' do
+    player = Player.new
+
+    expect(player.shields).to be_a(Inventory)
+  end
+
+  it 'has an armor inventory' do
+    player = Player.new
+
+    expect(player.armor).to be_a(Inventory)
   end
 
   it 'has an ingredients inventory' do
@@ -100,4 +118,12 @@ RSpec.describe Player do
 
     expect(player.key_items).to be_a(Inventory)
   end
+
+  # TODO: can equip armor
+  # TODO: has slate
+  # TODO: slate has ruins
+  # TODO: slate has memories / photos / compendium
+  # TODO: there are memories to recover
+  #
+
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Item
-  attr_accessor :name, :description, :value
+  attr_accessor :name, :description
 
   def edible?
     self.class.included_modules.include? Edible
@@ -9,9 +9,8 @@ class Item
 
   protected
 
-  def initialize(name:, description:, value:)
+  def initialize(name:, description:)
     @name = name
     @description = description
-    @value = value
   end
 end

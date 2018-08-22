@@ -4,16 +4,19 @@ require 'errors'
 require 'inventory/inventory'
 
 class Player
-  attr_accessor :hearts, :health, :weapons, :bows_and_arrows, :ingredients, :foods, :key_items
+  attr_accessor :hearts, :health, :weapons, :bows, :arrows, :shields, :armor, :ingredients, :foods, :key_items
 
   def initialize(hearts: 3, health: 3)
     @hearts = hearts
     @health = health
 
-    @weapons = Inventory.new(max_slots: 3)
-    @bows_and_arrows = Inventory.new(max_slots: 6)
+    @weapons = Inventory.new(max_slots: 8)
+    @bows = Inventory.new(max_slots: 5)
+    @arrows = Inventory.new
+    @shields = Inventory.new(max_slots: 4)
+    @armor = Inventory.new # TODO: is there a max for armor you can cary?
     @ingredients = Inventory.new
-    @foods = Inventory.new(max_slots: 20)
+    @foods = Inventory.new(max_slots: 60)
     @key_items = Inventory.new(max_slots: 20)
   end
 

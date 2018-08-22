@@ -31,6 +31,6 @@ class InventoryItem
   end
 
   def stackable?
-    [Item::Ingredient, Item::Mineral].include? item.class
+    [Ingredient, Mineral].include? item.class
   end
 end

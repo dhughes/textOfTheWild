@@ -7,12 +7,11 @@ class Plant < Item
   attr_accessor :name, :description, :value
 
   def initialize(name:, description:, value:)
-    @name = name
-    @description = description
+    super
     @value = value
   end
 
-  ARMORANTH = Ingredient.new(
+  ARMORANTH = Plant.new(
     name: 'Armoranth',
     description: 'This tough medicinal plant cannot be broken, but it can be cooked. Its durable yet flexible fibers raise your defense when cooked into a dish.',
     value: 5

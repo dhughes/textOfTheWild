@@ -9,7 +9,7 @@ class Food < Item
   attr_accessor :health
 
   def initialize(name:, description:, health:)
-    super(name: name, description: description, value: nil)
+    super(name: name, description: description)
     @health = health
   end
 
