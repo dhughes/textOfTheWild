@@ -1,5 +1,85 @@
 
+
+* terrain/biomes:
+    * regular ground
+    * rough ground
+    * mountainous
+    * cliffs
+    * river
+        * deep enough to swim in
+    * scenery:
+        * pond / puddle / shallow watter
+            * too shallow to swim in
+            * may house frogs
+    * desert
+    * snowy
+        
+* Trees / shrubs:
+    * sizes (different types allow different sizes):
+        * small (includes shrubs)
+            * types: 
+                * plain, pine, palm,   
+            * can be cut down
+            * can't be climbed
+            * does not drop a log
+            * may expose/drop an insect, frog, or lizard
+            * may house fruit (banana)
+        * medium
+            * types:
+                * plain, pine, durian, apple, skota dragon trees, 
+            * can be cut down
+            * can't be climbed
+            * may have mushrooms under them 
+            * may have a beetle on them (in some areas)
+            * drops a log when cut down
+            * may drop a korok leaf if cut down
+            * may drop a stick of cut down
+            * can house fruit (apple / durian)
+                * can be picked if climbed
+                * dropped if cut down
+        * large
+            * types
+                * plain, pine, skota dragon trees, Baobob Trees  
+            * can not be cut down
+            * can't be climbed
+            * may have mushrooms under them 
+            * do they do damage to a weapon when struck?
+            * may house a birds nest with one or two eggs
+            * may house a rock for a korok seed
+            * may have an acorn hanging down by a string
+                * shoot to find korok
+            * may have an acorn in a hole 
+                * shoot to find korok
+            
+            
+   
+        
+    * large trees:
+        * can't be cut down
+        * do they do damage to a weapon when struck?
+        * may house a birds nest with one or two eggs
+        * may house a rock for a korok seed
+        * may have an acorn hanging down by a string or in a hole 
+            * shoot to find korok
          
+* shrubs:
+    * all shrubs can be cut down, but don't drop logs
+    * types:
+        * banana tree:
+            * can be cut down? 
+            * spawns a few bananas (how many?)
+        * others:
+            * types
+                * sapling
+                * generic shrub
+                * tuft of grass
+            * can be cut down
+            * sometimes drop a hidden insect/frog/lizard
+          
+* logs
+    * spawned when a regular tree is cut down
+    * you can cut up a log 
+        * drops one or more bundles of wood
 
 * Inventory:
 	* Weapons - swords, spears, etc
