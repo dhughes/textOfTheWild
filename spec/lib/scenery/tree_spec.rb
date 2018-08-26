@@ -2,7 +2,6 @@
 
 require 'scenery/tree'
 require 'scenery/log'
-require 'item/ingredient'
 require 'item/weapon'
 require 'item/material'
 require 'errors'

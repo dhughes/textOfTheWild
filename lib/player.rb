@@ -61,9 +61,8 @@ class Player
     bows << item if item.is_a? Bow
     arrows << item if item.is_a? Arrow
     shields << item if item.is_a? Shield
-    ingredients << item if item.is_a? Ingredient
+    armor << item if item.is_a? Armor
     ingredients << item if item.is_a? Material
-    ingredients << item if item.is_a? Plant
   end
 
   private

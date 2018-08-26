@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'inventory/inventory'
-require 'item/ingredient'
 require 'item/food'
+require 'item/material'
 require 'errors'
 
 RSpec.describe Inventory do
@@ -10,14 +10,14 @@ RSpec.describe Inventory do
     it 'can add items to inventory' do
       inventory = Inventory.new
 
-      inventory.add(Ingredient::APPLE)
+      inventory.add(Material::APPLE)
     end
 
     it 'stacks multiple ingredients in one slot' do
       inventory = Inventory.new
 
-      inventory.add(Ingredient::APPLE)
-      inventory.add(Ingredient::APPLE)
+      inventory.add(Material::APPLE)
+      inventory.add(Material::APPLE)
 
       expect(inventory.slots_used).to eq(1)
     end
@@ -34,8 +34,8 @@ RSpec.describe Inventory do
     it 'correctly stack (or not) different types of items in slots' do
       inventory = Inventory.new
 
-      inventory.add(Ingredient::APPLE)
-      inventory.add(Ingredient::APPLE)
+      inventory.add(Material::APPLE)
+      inventory.add(Material::APPLE)
       inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
       inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
 
@@ -62,8 +62,8 @@ RSpec.describe Inventory do
       it 'takes into account whether items can be stacked or not' do
         inventory = Inventory.new(max_slots: 2)
 
-        inventory.add(Ingredient::APPLE)
-        inventory.add(Ingredient::APPLE)
+        inventory.add(Material::APPLE)
+        inventory.add(Material::APPLE)
         inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
 
         expect do
@@ -75,7 +75,7 @@ RSpec.describe Inventory do
         inventory = Inventory.new(max_slots: 2)
 
         expect do
-          1000.times { inventory.add(Ingredient::APPLE) }
+          1000.times { inventory.add(Material::APPLE) }
         end.to raise_error(Errors::CantHoldMoreError)
       end
     end
@@ -86,16 +86,16 @@ RSpec.describe Inventory do
     context 'when an item is in the inventory' do
       it 'returns true' do
         inventory = Inventory.new
-        inventory.add(Ingredient::APPLE)
+        inventory.add(Material::APPLE)
 
-        expect(inventory.include?(Ingredient::APPLE)).to eq(true)
+        expect(inventory.include?(Material::APPLE)).to eq(true)
       end
 
       it 'has << as an alias' do
         inventory = Inventory.new
-        inventory << Ingredient::APPLE
+        inventory << Material::APPLE
 
-        expect(inventory.include?(Ingredient::APPLE)).to eq(true)
+        expect(inventory.include?(Material::APPLE)).to eq(true)
       end
     end
   end

@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require 'item/edible'
-
 class Item
   attr_accessor :name, :description
 
   def edible?
-    self.class.included_modules.include? Edible
+    false
   end
 
   protected

@@ -3,13 +3,12 @@
 require 'player'
 require 'errors'
 require 'attack'
-require 'item/ingredient'
 require 'item/material'
 require 'item/weapon'
 require 'item/bow'
 require 'item/arrow'
 require 'item/shield'
-require 'item/plant'
+require 'item/armor'
 require 'inventory/inventory'
 
 RSpec.describe Player do
@@ -67,15 +66,15 @@ RSpec.describe Player do
       it 'increases health' do
         player = Player.new(health: 4)
 
-        player.eat(Ingredient::APPLE)
+        player.eat(Material::APPLE)
 
-        expect(player.health).to eq(4 + Ingredient::APPLE.health)
+        expect(player.health).to eq(4 + Material::APPLE.health)
       end
 
       it "only increases health to the player's hearts" do
         player = Player.new(health: 10)
 
-        player.eat(Ingredient::BIG_HEARTY_RADISH)
+        player.eat(Material::BIG_HEARTY_RADISH)
 
         expect(player.health).to eq(player.max_health)
       end
@@ -175,12 +174,20 @@ RSpec.describe Player do
     end
 
     it 'can add an armor to the armors inventory' do
-      pending "needs armor (head, body, legs)"
+      player = Player.new
+      head_armor = Armor::FLAMEBREAKER_HELM.new
+      body_armor = Armor::HYLIAN_TUNIC.new
+      leg_armor = Armor::CLIMBING_BOOTS.new
+      player.add_to_inventory(head_armor)
+      player.add_to_inventory(body_armor)
+      player.add_to_inventory(leg_armor)
+
+      expect(player.armor).to include(head_armor, body_armor, leg_armor)
     end
 
     it 'can add an ingredient to the ingredients inventory' do
       player = Player.new
-      item = Ingredient::APPLE
+      item = Material::APPLE
       player.add_to_inventory(item)
 
       expect(player.ingredients).to include(item)
@@ -194,17 +201,6 @@ RSpec.describe Player do
       expect(player.ingredients).to include(item)
     end
 
-    it 'can add a plant to the ingredients inventory' do
-      player = Player.new
-      item = Plant::ARMORANTH
-      player.add_to_inventory(item)
-
-      expect(player.ingredients).to include(item)
-    end
-
-    it 'can add other types of things to the ingredients inventory' do
-      pending "I need to implement fish, frogs, lizards, crabs, insects, monster parts, etc"
-    end
   end
 
   it 'has a weapons inventory' do

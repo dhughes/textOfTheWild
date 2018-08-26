@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'item/ingredient'
-require 'item/material'
 require 'set'
 
 class Inventory
@@ -18,7 +16,7 @@ class Inventory
     items[item] = (items[item] || 0) + 1
   end
 
-  alias_method :<<, :add
+  alias << add
 
   def slots_used
     items.size
