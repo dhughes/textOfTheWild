@@ -3,17 +3,17 @@
 require 'item/item'
 
 class Arrow < Item
-  attr_accessor :attack_bonus
+  attr_accessor :attack
 
-  def initialize(name:, description:, attack_bonus:)
+  def initialize(name:, description:, attack:)
     super(name: name, description: description)
-    @attack_bonus = attack_bonus
+    @attack = attack
   end
 
   ARROW = Arrow.new(
     name: 'Arrow',
     description: "A common arrow. It's shaft was carved from the wood of a sturdy tree.",
-    attack_bonus: 0
+    attack: 2
   )
 
   class << self

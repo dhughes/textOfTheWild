@@ -25,6 +25,13 @@ RSpec.describe Weapon do
     expect(sword.metallic?).to eq(true)
   end
 
+  it 'is or is not bladed' do
+    tree_branch = Weapon::TREE_BRANCH.new
+    sword = Weapon::TRAVELERS_SWORD.new
+    expect(tree_branch.bladed?).to eq(false)
+    expect(sword.bladed?).to eq(true)
+  end
+
   it 'has different instances of each item' do
     sword1 = Weapon::TRAVELERS_SWORD.new
     sword2 = Weapon::TRAVELERS_SWORD.new
