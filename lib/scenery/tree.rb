@@ -15,20 +15,20 @@ class Tree
 
   def receive_attack(attack)
     if can_be_damaged_by_attack?(attack)
-      self.health = self.health > attack.power ? health - attack.power : 0
+      self.health = health > attack.power ? health - attack.power : 0
     end
 
-    if dead?
-      drops << Log.new
-    end
+    drops << Log.new if dead?
 
     attack.received
+
+    health
   end
 
   private
 
   def dead?
-    self.health == 0
+    health.zero?
   end
 
   def can_be_damaged_by_attack?(attack)

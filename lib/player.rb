@@ -4,10 +4,10 @@ require 'errors'
 require 'inventory/inventory'
 
 class Player
-  attr_accessor :hearts, :health, :weapons, :bows, :arrows, :shields, :armor, :ingredients, :foods, :key_items
+  attr_accessor :max_health, :health, :weapons, :bows, :arrows, :shields, :armor, :ingredients, :foods, :key_items
 
-  def initialize(hearts: 3, health: 3)
-    @hearts = hearts
+  def initialize(max_health: 12, health: max_health)
+    @max_health = max_health
     @health = health
 
     @weapons = Inventory.new(max_slots: 8)
@@ -20,20 +20,34 @@ class Player
     @key_items = Inventory.new(max_slots: 20)
   end
 
-  def take_damage(damage)
-    if health < damage
-      self.health = 0
-      return 0
+  def receive_attack(attack)
+    if can_be_damaged_by_attack?(attack)
+      self.health = max_health > attack.power ? health - attack.power : 0
     end
 
-    self.health = health - damage
+    attack.received
+
+    self.health
+  end
+
+  def hearts
+    health / 4.0
   end
 
   def eat(edible)
     raise Errors::InedibleError, "You can't eat #{edible}" unless edible.edible?
 
-    added_health = health + edible.health
-    added_health = added_health < hearts ? added_health : hearts
-    self.health = added_health
+    self.health = if health + edible.health < max_health
+                    health + edible.health
+                  else
+                    max_health
+                  end
+
+  end
+
+  private
+
+  def can_be_damaged_by_attack?(attack)
+    true
   end
 end

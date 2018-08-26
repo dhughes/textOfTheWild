@@ -2,8 +2,10 @@
 
 require 'player'
 require 'errors'
+require 'attack'
 require 'item/ingredient'
 require 'item/material'
+require 'item/weapon'
 require 'inventory/inventory'
 
 RSpec.describe Player do
@@ -13,40 +15,45 @@ RSpec.describe Player do
     expect(player).to be_a(Player)
   end
 
+  it 'has a health of 12 to start with' do
+    player = Player.new
+
+    expect(player.health).to eq(12)
+  end
+
   it 'has has 3 hearts to start with' do
     player = Player.new
 
     expect(player.hearts).to eq(3)
   end
 
-  it 'has a health of 3 to start with' do
-    player = Player.new
+  describe '#receive_attack' do
+    it 'a player can receive an attack from a weapon' do
+      player = Player.new(health: 10)
+      sword = Weapon::TRAVELERS_SWORD.new
+      attack = Attack.new(implement: sword)
 
-    expect(player.health).to eq(3)
-  end
+      player.receive_attack(attack)
 
-  describe '#take_damage' do
-    it 'a player can take damage' do
-      player = Player.new
-
-      player.take_damage(0.5)
-
-      expect(player.health).to eq(2.5)
+      expect(player.health).to eq(5)
+      expect(player.hearts).to eq(1.25)
     end
 
     context 'before the player dies' do
       it "returns the player's remaining health" do
-        player = Player.new(health: 5)
+        player = Player.new(health: 10)
+        attack = Attack.new(implement: Weapon::TRAVELERS_SWORD.new)
 
-        expect(player.take_damage(0.5)).to eq(4.5)
+        expect(player.receive_attack(attack)).to eq(5)
       end
     end
 
     context 'when the player dies' do
       it 'returns 0' do
         player = Player.new(health: 5)
+        attack = Attack.new(implement: Weapon::TRAVELERS_SWORD.new)
 
-        expect(player.take_damage(6)).to eq(0)
+        expect(player.receive_attack(attack)).to eq(0)
       end
     end
 
@@ -55,19 +62,19 @@ RSpec.describe Player do
   describe '#eat' do
     context 'when eating things that are edible' do
       it 'increases health' do
-        player = Player.new(health: 1)
+        player = Player.new(health: 4)
 
         player.eat(Ingredient::APPLE)
 
-        expect(player.health).to eq(1 + Ingredient::APPLE.health)
+        expect(player.health).to eq(4 + Ingredient::APPLE.health)
       end
 
       it "only increases health to the player's hearts" do
-        player = Player.new(health: 2.5)
+        player = Player.new(health: 10)
 
         player.eat(Ingredient::BIG_HEARTY_RADISH)
 
-        expect(player.health).to eq(player.hearts)
+        expect(player.health).to eq(player.max_health)
       end
     end
 

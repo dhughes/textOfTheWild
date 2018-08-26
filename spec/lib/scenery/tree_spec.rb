@@ -18,8 +18,9 @@ RSpec.describe Tree do
         attack = Attack.new(implement: sword)
         durability = sword.durability
 
-        tree.receive_attack(attack)
+        result = tree.receive_attack(attack)
 
+        expect(result).to eq(1)
         expect(tree.health).to eq(1)
         expect(sword.durability).to eq(durability - 1)
       end
@@ -30,8 +31,9 @@ RSpec.describe Tree do
         attack = Attack.new(implement: sword)
         durability = sword.durability
 
-        tree.receive_attack(attack)
+        result = tree.receive_attack(attack)
 
+        expect(result).to eq(0)
         expect(tree.health).to eq(0)
         expect(tree.drops).to include(a_kind_of(Log))
         expect(sword.durability).to eq(durability - 1)
@@ -45,8 +47,9 @@ RSpec.describe Tree do
         attack = Attack.new(implement: hammer)
         durability = hammer.durability
 
-        tree.receive_attack(attack)
+        result = tree.receive_attack(attack)
 
+        expect(result).to eq(6)
         expect(tree.health).to eq(6)
         expect(hammer.durability).to eq(durability - 1)
       end
