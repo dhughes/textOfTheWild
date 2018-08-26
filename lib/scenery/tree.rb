@@ -10,7 +10,7 @@ class Tree
     @health = health
   end
 
-  def take_damage(damage)
+  def take_damage_from(damage)
     if health < damage
       self.health = 0
       @dropped_items = [Material::WOOD]

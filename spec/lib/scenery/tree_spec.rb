@@ -2,17 +2,23 @@
 
 require 'scenery/tree'
 require 'item/ingredient'
+require 'item/weapon'
 require 'errors'
 
 RSpec.describe Tree do
 
   describe '#take_damage' do
-    it 'a tree can take damage' do
-      tree = Tree.new(health: 5)
+    context 'when a weapon is metallic' do
+      it 'a tree can take damage' do
+        tree = Tree.new(health: 5)
+        sword = Weapon::TRAVELERS_SWORD.new
+        durability = sword.durability
 
-      tree.take_damage(2)
+        tree.take_damage_from(sword)
 
-      expect(tree.health).to eq(3)
+        expect(tree.health).to eq(3)
+        expect(sword.durability).to eq(durability - 1)
+      end
     end
 
     context 'before a tree dies' do
