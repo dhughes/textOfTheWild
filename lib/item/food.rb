@@ -2,8 +2,10 @@
 
 require 'item/item'
 require 'item/edible'
+require 'item/buildable'
 
 class Food < Item
+  extend Buildable
   include Edible
 
   attr_accessor :health
@@ -13,13 +15,10 @@ class Food < Item
     @health = health
   end
 
-  FISH_AND_MUSHROOM_SKEWER = Food.new(
+  FISH_AND_MUSHROOM_SKEWER = builder(
     name: 'Fish and Mushroom Skewer',
     description: 'A simple dish made by cooking skewered, fresh fish alongside fragrant mushrooms.',
     health: 0.5
   )
 
-  class << self
-    private :new
-  end
 end

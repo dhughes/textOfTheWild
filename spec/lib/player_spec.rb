@@ -82,10 +82,16 @@ RSpec.describe Player do
       it 'raises an InedibleError' do
         player = Player.new(health: 2.5)
 
-        expect { player.eat(Material::AMBER) }.to raise_error(Errors::InedibleError)
+        expect {player.eat(Material::AMBER)}.to raise_error(Errors::InedibleError)
       end
     end
   end
+
+  # describe '#equip' do
+  #   it 'can equip a weapon' do
+  #
+  #   end
+  # end
 
   it 'has a weapons inventory' do
     player = Player.new

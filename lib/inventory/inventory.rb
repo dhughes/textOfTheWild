@@ -2,7 +2,6 @@
 
 require 'item/ingredient'
 require 'item/material'
-require 'inventory/inventory_item'
 require 'set'
 
 class Inventory
@@ -14,14 +13,9 @@ class Inventory
   end
 
   def add(item)
-    inventory_item = InventoryItem.new(item)
-    raise Errors::CantHoldMoreError unless can_hold_more?(inventory_item)
+    raise Errors::CantHoldMoreError unless can_hold_more?(item)
 
-    items[inventory_item] = if items.include? inventory_item
-                              items[inventory_item] + 1
-                            else
-                              1
-                            end
+    items[item] = (items[item] || 0) + 1
   end
 
   def slots_used
@@ -30,9 +24,9 @@ class Inventory
 
   private
 
-  def can_hold_more?(inventory_item)
-    if items.include? inventory_item
-      items[inventory_item] < 999
+  def can_hold_more?(item)
+    if items.include? item
+      items[item] < 999
     else
       max_slots.nil? || slots_used < max_slots
     end

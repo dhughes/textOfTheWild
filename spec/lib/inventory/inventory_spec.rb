@@ -25,8 +25,8 @@ RSpec.describe Inventory do
     it 'does not stack meals in one slot' do
       inventory = Inventory.new
 
-      inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
-      inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
+      inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
+      inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
 
       expect(inventory.slots_used).to eq(2)
     end
@@ -36,8 +36,8 @@ RSpec.describe Inventory do
 
       inventory.add(Ingredient::APPLE)
       inventory.add(Ingredient::APPLE)
-      inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
-      inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
+      inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
+      inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
 
       expect(inventory.slots_used).to eq(3)
     end
@@ -51,11 +51,11 @@ RSpec.describe Inventory do
     context 'when adding more items than the inventory can hold' do
       it 'raises an error' do
         inventory = Inventory.new(max_slots: 2)
-        inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
-        inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
+        inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
+        inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
 
         expect do
-          inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
+          inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
         end.to raise_error(Errors::CantHoldMoreError)
       end
 
@@ -64,10 +64,10 @@ RSpec.describe Inventory do
 
         inventory.add(Ingredient::APPLE)
         inventory.add(Ingredient::APPLE)
-        inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
+        inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
 
         expect do
-          inventory.add(Food::FISH_AND_MUSHROOM_SKEWER)
+          inventory.add(Food::FISH_AND_MUSHROOM_SKEWER.new)
         end.to raise_error(Errors::CantHoldMoreError)
       end
 
