@@ -7,7 +7,7 @@ class Plant < Item
   attr_accessor :name, :description, :value
 
   def initialize(name:, description:, value:)
-    super
+    super(name: name, description: description)
     @value = value
   end
 

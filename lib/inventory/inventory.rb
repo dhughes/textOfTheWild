@@ -18,8 +18,14 @@ class Inventory
     items[item] = (items[item] || 0) + 1
   end
 
+  alias_method :<<, :add
+
   def slots_used
     items.size
+  end
+
+  def include?(item)
+    items.include? item
   end
 
   private

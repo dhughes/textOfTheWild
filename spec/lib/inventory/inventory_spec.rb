@@ -80,33 +80,23 @@ RSpec.describe Inventory do
       end
     end
 
-    # it 'items added to inventory appear in inventory' do
-    #   inventory = Inventory.new
-    #
-    #   inventory.add(Ingredient::APPLE)
-    #
-    #   expect(inventory.contains?(Ingredient::APPLE)).to be(true)
-    # end
-    #
-    # it "items not added to the inventory don't appear in it" do
-    #   inventory = Inventory.new
-    #
-    #   inventory.add(Ingredient::APPLE)
-    #
-    #   expect(inventory.contains?(Ingredient::BIG_HEARTY_RADISH)).
-    #     to be(false)
-    # end
+  end
 
-    # context 'when items are grouped together' do
-    #   it 'holds one inventory item for the item' do
-    #     inventory = Inventory.new
-    #
-    #     inventory.add(Ingredient::APPLE)
-    #     inventory.add(Ingredient::APPLE)
-    #     inventory.add(Ingredient::APPLE)
-    #
-    #     expect(inventory.items[Ingredient::APPLE].quantity).to eq(3)
-    #   end
-    # end
+  describe '#inlude?' do
+    context 'when an item is in the inventory' do
+      it 'returns true' do
+        inventory = Inventory.new
+        inventory.add(Ingredient::APPLE)
+
+        expect(inventory.include?(Ingredient::APPLE)).to eq(true)
+      end
+
+      it 'has << as an alias' do
+        inventory = Inventory.new
+        inventory << Ingredient::APPLE
+
+        expect(inventory.include?(Ingredient::APPLE)).to eq(true)
+      end
+    end
   end
 end
