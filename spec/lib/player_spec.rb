@@ -31,7 +31,7 @@ RSpec.describe Player do
   end
 
   describe '#receive_attack' do
-    it 'a player can receive an attack from a weapon' do
+    it 'can receive an attack from a weapon' do
       player = Player.new(health: 10)
       sword = Weapon::TRAVELERS_SWORD.new
       attack = Attack.new(implement: sword)
@@ -57,6 +57,25 @@ RSpec.describe Player do
         attack = Attack.new(implement: Weapon::TRAVELERS_SWORD.new)
 
         expect(player.receive_attack(attack)).to eq(0)
+      end
+    end
+
+    context 'when wearing armor' do
+      it 'lessens the impact of the attack' do
+        player = Player.new(health: 10)
+        player.add_to_inventory(head_armor = Armor::FLAMEBREAKER_HELM.new)
+        player.add_to_inventory(body_armor = Armor::HYLIAN_TUNIC.new)
+        player.add_to_inventory(leg_armor = Armor::CLIMBING_BOOTS.new)
+        player.equip(head_armor)
+        player.equip(body_armor)
+        player.equip(leg_armor)
+
+        sword = Weapon::IRON_SLEDGEHAMMER.new
+        attack = Attack.new(base_attack: 4, implement: sword)
+
+        player.receive_attack(attack)
+
+        expect(player.health).to eq(3)
       end
     end
   end
@@ -97,7 +116,7 @@ RSpec.describe Player do
 
       player.equip(sword)
 
-      expect(player.equipped_weapon).to be(sword)
+      expect(player.equipped.weapon).to be(sword)
     end
 
     it 'can only equip a weapon in the inventory' do
@@ -116,7 +135,7 @@ RSpec.describe Player do
 
       player.equip(bow)
 
-      expect(player.equipped_bow).to be(bow)
+      expect(player.equipped.bow).to be(bow)
     end
 
     it 'can equip an arrow' do
@@ -126,7 +145,7 @@ RSpec.describe Player do
 
       player.equip(arrow)
 
-      expect(player.equipped_arrow).to be(arrow)
+      expect(player.equipped.arrow).to be(arrow)
     end
 
     it 'can equip a shield' do
@@ -136,7 +155,37 @@ RSpec.describe Player do
 
       player.equip(item)
 
-      expect(player.equipped_shield).to be(item)
+      expect(player.equipped.shield).to be(item)
+    end
+
+    it 'can equip head armor' do
+      player = Player.new
+      item = Armor::FLAMEBREAKER_HELM.new
+      player.add_to_inventory(item)
+
+      player.equip(item)
+
+      expect(player.equipped.armor.head).to be(item)
+    end
+
+    it 'can equip body armor' do
+      player = Player.new
+      item = Armor::HYLIAN_TUNIC.new
+      player.add_to_inventory(item)
+
+      player.equip(item)
+
+      expect(player.equipped.armor.body).to be(item)
+    end
+
+    it 'can equip leg armor' do
+      player = Player.new
+      item = Armor::CLIMBING_BOOTS.new
+      player.add_to_inventory(item)
+
+      player.equip(item)
+
+      expect(player.equipped.armor.leg).to be(item)
     end
   end
 
@@ -173,7 +222,7 @@ RSpec.describe Player do
       expect(player.shields).to include(item)
     end
 
-    it 'can add an armor to the armors inventory' do
+    it 'can add an armor to the armor inventory' do
       player = Player.new
       head_armor = Armor::FLAMEBREAKER_HELM.new
       body_armor = Armor::HYLIAN_TUNIC.new
@@ -200,7 +249,6 @@ RSpec.describe Player do
 
       expect(player.ingredients).to include(item)
     end
-
   end
 
   it 'has a weapons inventory' do
@@ -251,11 +299,8 @@ RSpec.describe Player do
     expect(player.key_items).to be_a(Inventory)
   end
 
-  # TODO: can equip armor
   # TODO: has slate
   # TODO: slate has ruins
   # TODO: slate has memories / photos / compendium
   # TODO: there are memories to recover
-  #
-
 end

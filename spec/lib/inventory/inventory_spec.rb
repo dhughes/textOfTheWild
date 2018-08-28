@@ -79,7 +79,6 @@ RSpec.describe Inventory do
         end.to raise_error(Errors::CantHoldMoreError)
       end
     end
-
   end
 
   describe '#inlude?' do

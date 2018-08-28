@@ -56,5 +56,4 @@ class Weapon < Item
     metallic: true,
     bladed: true
   )
-
 end

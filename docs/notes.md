@@ -1,5 +1,7 @@
-
-
+torch broke after 8 hits on a tree
+traveler's sword broke after 20 hits on logs
+boko club broke after 12 hits on 4 bokos
+woodcutter's axe broke after 37/38 hits on trees/logs and one bush.
 
 * terrain/biomes:
     * regular ground
@@ -127,6 +129,7 @@
 			* fairies
 			* wood
 			* etc
+
 	* Food / meals
 		* One item per slot
 		* Can hold duplicates

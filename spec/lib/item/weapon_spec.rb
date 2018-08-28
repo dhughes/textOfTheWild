@@ -5,7 +5,7 @@ require 'item/weapon'
 RSpec.describe Weapon do
   it 'exists' do
     tree_branch = Weapon::TREE_BRANCH.new
-    expect(tree_branch ).to be_a(Weapon)
+    expect(tree_branch).to be_a(Weapon)
   end
 
   it 'has attack power' do

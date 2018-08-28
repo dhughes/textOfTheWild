@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 class Attack
+  attr_accessor :base_attack, :implement, :modifier
 
-  attr_accessor :implement, :modifier
-
-  def initialize(implement:, modifier: nil)
+  def initialize(base_attack: 0, implement: nil, modifier: nil)
+    @base_attack = base_attack
     @implement = implement
     @modifier = modifier
   end
 
   def power
-    implement.attack + modifier_attack
+    base_attack + implement_attack + modifier_attack
   end
 
   def received
@@ -18,6 +18,10 @@ class Attack
   end
 
   private
+
+  def implement_attack
+    implement&.attack || 0
+  end
 
   def modifier_attack
     modifier&.attack || 0

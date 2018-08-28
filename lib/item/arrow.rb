@@ -19,5 +19,4 @@ class Arrow < Item
   class << self
     private :new
   end
-
 end

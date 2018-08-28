@@ -12,6 +12,7 @@ class Bow < Item
     super(name: name, description: description)
     @attack = attack
     @durability = durability
+    @range = range
     @metallic = metallic
   end
 
@@ -35,5 +36,4 @@ class Bow < Item
     range: 20,
     metallic: false
   )
-
 end

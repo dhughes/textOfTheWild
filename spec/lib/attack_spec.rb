@@ -7,6 +7,17 @@ require 'item/arrow'
 
 RSpec.describe Attack do
 
+  it 'allows for an attack without an implement (EG: moblin punches)' do
+    attack = Attack.new(base_attack: 5)
+    expect(attack.power).to be(5)
+  end
+
+  it 'considers the base power of the attack' do
+    sword = Weapon::TRAVELERS_SWORD.new
+    attack = Attack.new(base_attack: 5, implement: sword)
+    expect(attack.power).to be(sword.attack + 5)
+  end
+
   context 'when using a weapon' do
     it 'calculates total attack power' do
       sword = Weapon::TRAVELERS_SWORD.new

@@ -33,5 +33,4 @@ class Shield < Item
     durability: 10,
     metallic: false
   )
-
 end

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
+
 require 'private_attrs'
 require 'item/material'
 require 'item/weapon'
 require 'scenery/log'
 
 class Tree
-
   attr_accessor :health, :inventory, :drops
 
   def initialize(health:)
@@ -34,5 +34,4 @@ class Tree
   def can_be_damaged_by_attack?(attack)
     attack.implement.is_a?(Weapon) && attack.implement.bladed?
   end
-
 end

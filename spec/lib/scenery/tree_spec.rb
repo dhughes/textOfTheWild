@@ -8,7 +8,6 @@ require 'errors'
 require 'attack'
 
 RSpec.describe Tree do
-
   describe '#take_damage' do
     context 'when a weapon is bladed' do
       it 'can damage a tree' do
@@ -55,7 +54,6 @@ RSpec.describe Tree do
     end
   end
 
-
   # context 'before a tree dies' do
   #   it "returns the tree's remaining health" do
   #     tree = Tree.new(health: 5)
@@ -85,4 +83,3 @@ RSpec.describe Tree do
   #   end
   # end
 end
-

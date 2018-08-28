@@ -22,5 +22,4 @@ class Food < Item
     description: 'A simple dish made by cooking skewered, fresh fish alongside fragrant mushrooms.',
     health: 0.5
   )
-
 end

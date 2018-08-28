@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Buildable
   def builder(data)
     Builder.new(self, data)
