@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'scene/scene'
+require 'cli/ui'
 
 class TextOfTheWild
   attr_accessor :scene
@@ -11,28 +12,35 @@ class TextOfTheWild
   end
 
   def play
-    puts scene.describe
-    do_something
+    loop do
+      CLI::UI::StdoutRouter.enable
+      CLI::UI::Frame.open(scene.title) do
+        puts scene.describe
+        do_something
 
-    # loop do
-    #   STARTING_SCENE.describe
-    # end
+      end
+    end
   end
 
   def do_something
     action = choose_action
     target = choose_target
+
+    puts "You want to #{action} a #{target}"
   end
 
   def choose_action
-    puts 'What do you want to do?'
-    scene.list_actions.each { |action| puts "- #{action}" }
-    print ': '
-    gets
+    CLI::UI.ask(
+      'What do you want to do?',
+      options: scene.list_actions
+    )
   end
 
   def choose_target
-    scene.list_targets.each { |target| puts "- #{target}" }
+    CLI::UI.ask(
+      'To what?',
+      options: scene.list_targets.map(&:to_s)
+    )
   end
 end
 

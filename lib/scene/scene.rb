@@ -21,6 +21,10 @@ class Scene
     @from_distance = from_distance
   end
 
+  def title
+    'Grassy Field'
+  end
+
   def describe
     description = [setting, layout.map { |_, things| things.map(&:describe) }].flatten.join(' ')
     "You stand #{description}"
