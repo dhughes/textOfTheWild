@@ -25,6 +25,14 @@ class Tree
     health
   end
 
+  def describe
+    'A regular old tree.'
+  end
+
+  def list_available_actions
+    ['Examine', 'Climb', 'Attack']
+  end
+
   private
 
   def dead?
