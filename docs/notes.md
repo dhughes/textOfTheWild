@@ -324,3 +324,94 @@ Types of items:
 
 * can you burn down trees?
 *
+
+
+# world:
+
+Scene # any scene (ground, cliff, water, building, etc)
+	exits = [] # an array of places you can exit the current scene
+	altitude = 0 to 255 # a numeric value indicating relative height of the scenery
+	descriptions = {
+		in: "A cliff juts out into... rocks crunch under your feed..." # descriptive text for where you are
+		near: "" # what you can see when looking at this scene through an exit. May be blocked by altitude changes or trees
+
+	}
+
+When different scenes connect at different-enough heights you have to climb a cliff / rock wall to go up. The different in altitude indicates how much stamina it will take to climb. You can climb down as well.
+
+You can jump down a cliff/rock wall and, optionally, use your paraglider to land gently.
+
+
+
+
+Room < Scene
+	windows = [] # an array of windows you can look out.
+	direction = n/s/e/w, etc # the direction the window faces.
+	broken? = true/false # you can climb out broken windows.
+
+lowest color: 3c2e01
+highest color: c4c8b1
+
+world position: 8300,4090
+	* Description:
+		* You are in a grassy field that gently slopes downhill to the south east
+		* V-shaped cliff juts out to the north
+		* There's a group of trees to the south. Behind them is an imposing rock wall.
+		* An opening in the rocks leads into a dark cave (the time tomb)
+	* Entities:
+		* Trees
+		* Mushrooms?
+	* Bordering areas:
+		* NW, N, NE, E: Down cliff area
+		* SE, S: Down gentle slope area
+		* SW, W: Cl
+	* Exit points:
+		* Enter time tomb
+		* Jump off northern cliff (Maybe you get a chance to open your paraglider before you hit the ground?)
+		* Climb down northern cliff (Requires a degree of stamina. If you run out you fall however far down the cliff)
+		* Climb up southern cliff (Requires sufficient stamina or you fall and maybe get hurt)
+
+
+Maybe areas in the world know how to describe themselves from various distances and perspectives.
+	We'd need to think about relative altitudes and distances away.
+		* relative altitudes:
+			* same
+			* lower
+			* higher
+			* steeply lower (see further)
+			* steeply higher (see less)
+			* far distance (when I have a higher altitude)
+		* I can't see past things at my height or higher.
+
+	0 spaces (where you are right now): Very detailed
+	1 space away at same altitude: Moderate detail
+	2 spaces away at same altitude or down: nothing
+	2 spaces away at higher altitude:
+
+
+
+
+	Maybe climbing happens a bit at a time? EG, if the cliff is super high you have to go through a set number of climb up/down/(left/right?) phases until you reach the top/bottom? Each phase uses up stamina.
+
+
+	* North: Cliff that drops sharply down
+	* North East:
+	* South: Small grassy field
+	*
+	* East
+	* The grass below your feet is soft and green. You are at the top of a high cliff that drops steeply downward. The drop off extends in a wide arch first extending before you, but then bending back to the south
+
+<img alt="" role="presentation" src="https://www.zeldadungeon.net/maps/botw/tiles/4/5_10.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 750px; height: 750px; transform: translate3d(-400px, 870px, 0px); opacity: 1;">
+
+
+https://www.zeldadungeon.net/maps/botw/tiles/5/0_0.jpg
+
+https://www.zeldadungeon.net/maps/botw/tiles/5/0_33.jpg
+
+https://www.zeldadungeon.net/maps/botw/tiles/5/31_33.jpg
+
+magick montage 10_10.jpg 11_10.jpg -geometry 750x750+0+0 montage.jpg
+
+magick montage [0-31]_10.jpg -tile 31x1 -geometry 750x750+0+0 row_10.jpg
+
+magick montage 0_0.jpg 1_0.jpg 2_0.jpg 3_0.jpg 4_0.jpg 5_0.jpg 0_1.jpg 1_1.jpg 2_1.jpg 3_1.jpg 4_1.jpg 5_1.jpg 0_2.jpg 1_2.jpg 2_2.jpg 3_2.jpg 4_2.jpg 5_2.jpg 0_3.jpg 1_3.jpg 2_3.jpg 3_3.jpg 4_3.jpg 5_3.jpg 0_4.jpg 1_4.jpg 2_4.jpg 3_4.jpg 4_4.jpg 5_4.jpg 0_5.jpg 1_5.jpg 2_5.jpg 3_5.jpg 4_5.jpg 5_5.jpg -tile 6x6 -geometry 750x750+0+0 row_10.jpg

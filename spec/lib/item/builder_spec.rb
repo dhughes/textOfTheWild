@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'item/buildable'
+require 'util/buildable'
 require 'item/weapon'
 
 RSpec.describe Buildable do

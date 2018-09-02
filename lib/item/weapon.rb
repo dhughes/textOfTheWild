@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'item/item'
-require 'item/buildable'
+require 'util/buildable'
 
 class Weapon < Item
   extend Buildable
